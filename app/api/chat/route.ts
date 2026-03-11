@@ -8,7 +8,7 @@ export const runtime = 'nodejs';
 interface ChatRequest {
   message: string;
   conversationId?: number;
-  conversationHistory?: Array<{ role: string; content: string }>;
+  conversationHistory?: Array<{ role: 'user' | 'assistant'; content: string }>;
 }
 
 // Streaming response
