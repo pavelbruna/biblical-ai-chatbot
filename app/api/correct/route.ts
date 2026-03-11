@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { correctMessage } from '@/lib/db';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 interface CorrectRequest {
   messageId: number;
