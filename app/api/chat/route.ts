@@ -70,32 +70,5 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Get conversation history
-export async function GET(req: NextRequest) {
-  try {
-    const session = await getServerSession(authOptions);
-
-    if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const conversationId = req.nextUrl.searchParams.get('conversationId');
-
-    if (!conversationId) {
-      return NextResponse.json(
-        { error: 'conversationId is required' },
-        { status: 400 }
-      );
-    }
-
-    const messages = await getConversationMessages(parseInt(conversationId));
-
-    return NextResponse.json({ messages });
-  } catch (error) {
-    console.error('Get conversation error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
-  }
-}
+// GET endpoint removed - conversation history is now managed client-side
+// due to Neon FREE tier size limit (512 MB)
