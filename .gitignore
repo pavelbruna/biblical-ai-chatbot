@@ -32,3 +32,5 @@ test-*.js
 test-*.mjs
 check-*.js
 vacuum-*.js
+
+.vercel

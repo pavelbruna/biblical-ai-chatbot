@@ -180,4 +180,5 @@ if (require.main === module) {
     });
 }
 
-export { parseBible21, BibleVerse };
+export { parseBible21 };
+export type { BibleVerse };
