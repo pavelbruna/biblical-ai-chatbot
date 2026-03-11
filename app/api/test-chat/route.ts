@@ -29,7 +29,8 @@ export async function GET(req: NextRequest) {
           controller.close();
         } catch (error) {
           console.error('❌ Streaming error:', error);
-          controller.enqueue(encoder.encode(`\n\n[ERROR: ${error.message}]`));
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          controller.enqueue(encoder.encode(`\n\n[ERROR: ${errorMessage}]`));
           controller.close();
         }
       },
@@ -43,8 +44,9 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error('❌ Test API error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { error: 'Test failed', details: error.message },
+      { error: 'Test failed', details: errorMessage },
       { status: 500 }
     );
   }
